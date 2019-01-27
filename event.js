@@ -1,39 +1,38 @@
 'use strict';
 
-  var mql = window.matchMedia('(min-width: 960px)');
-
-  var widthChange = function(mq){
-    if(mq.matches){
-      $('.container').empty();
-      $.ajax({
-          type: 'GET',
-          url: "./data.json",
-          dataType: "json",
-          success: function(data) {
-            pcEventSort(data);
-          },
-          error: function(){
-            console.log("error");
-          }
-      });
-    }else{
-      $('.container').empty();
-      $.ajax({
-          type: 'GET',
-          url: "./data.json",
-          dataType: "json",
-          success: function(data) {
-            spEventSort(data);
-          },
-          error: function(){
-            console.log("error");
-          }
-      });
-    }
+var mql = window.matchMedia('(min-width: 960px)');
+var widthChange = function(mq){
+  if(mq.matches){
+    $('.container').empty();
+    $.ajax({
+        type: 'GET',
+        url: "./data.json",
+        dataType: "json",
+        success: function(data) {
+          pcEventSort(data);
+        },
+        error: function(){
+          console.log("error");
+        }
+    });
+  }else{
+    $('.container').empty();
+    $.ajax({
+        type: 'GET',
+        url: "./data.json",
+        dataType: "json",
+        success: function(data) {
+          spEventSort(data);
+        },
+        error: function(){
+          console.log("error");
+        }
+    });
   }
+}
 
-  mql.addListener(widthChange);
-  widthChange(mql);
+mql.addListener(widthChange);
+widthChange(mql);
 
 var pcEventSort = function(data){
   var grid = "<div class='grid clearfix'><div class='grid-col'></div><div class='grid-col'></div><div class='grid-col'></div></div>";
@@ -67,3 +66,8 @@ var spEventSort = function(data){
 
   }
 }
+$(function(){
+  $('dt').on('click',function(){
+    $(this).next('dd').slideToggle();
+  });
+});
