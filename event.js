@@ -66,9 +66,8 @@ var spEventSort = function(data){
 
   }
 }
-$(function(){
+
   $('dt').on('click',function(){
     console.log('クリックされた');
     $(this).next('dd').slideToggle();
   });
-});
