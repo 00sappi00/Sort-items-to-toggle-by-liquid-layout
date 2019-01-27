@@ -11,9 +11,7 @@ var widthChange = function(mq){
         success: function(data) {
           pcEventSort(data);
         },
-        error: function(){
-          console.log("error");
-        }
+        error: function(){}
     });
   }else{
     $('.container').empty();
@@ -24,9 +22,7 @@ var widthChange = function(mq){
         success: function(data) {
           spEventSort(data);
         },
-        error: function(){
-          console.log("error");
-        }
+        error: function(){}
     });
   }
 }
@@ -52,10 +48,6 @@ var pcEventSort = function(data){
       $('.grid-col:nth-child(3)').append(el);
     }
   }
-  $('dt').on('click',function(){
-    console.log('クリックされた');
-    $(this).next('dd').slideToggle();
-  });
 }
 var spEventSort = function(data){
   var grid = "<div class='grid clearfix'></div>";
@@ -65,11 +57,12 @@ var spEventSort = function(data){
     el += "<div class='grid-img'><img src='" + data.event[i].image + "'></div>";
     el += "<dl><dt>" + data.event[i].event_name + "</dt>";
     el += "<dd style='display:none;'>" + data.event[i].detail + "</dd>";
-    el += "</dl></div>"
+    el += "</dl></div>";
     $('.grid').append(el);
-    $('dt').on('click',function(){
-      console.log('クリックされた');
-      $(this).next('dd').slideToggle();
-    });
   }
 }
+$(window).on('load',function(){
+  $('dt').on('click',function(){
+    $(this).next('dd').slideToggle();
+  });
+})
