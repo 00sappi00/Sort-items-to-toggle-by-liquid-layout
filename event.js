@@ -52,6 +52,10 @@ var pcEventSort = function(data){
       $('.grid-col:nth-child(3)').append(el);
     }
   }
+  $('dt').on('click',function(){
+    console.log('クリックされた');
+    $(this).next('dd').slideToggle();
+  });
 }
 var spEventSort = function(data){
   var grid = "<div class='grid clearfix'></div>";
@@ -63,11 +67,9 @@ var spEventSort = function(data){
     el += "<dd style='display:none;'>" + data.event[i].detail + "</dd>";
     el += "</dl></div>"
     $('.grid').append(el);
-
+    $('dt').on('click',function(){
+      console.log('クリックされた');
+      $(this).next('dd').slideToggle();
+    });
   }
 }
-
-  $('dt').on('click',function(){
-    console.log('クリックされた');
-    $(this).next('dd').slideToggle();
-  });
