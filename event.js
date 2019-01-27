@@ -30,6 +30,12 @@ var widthChange = function(mq){
 mql.addListener(widthChange);
 widthChange(mql);
 
+var toggle = function(){
+  $('dt').on('click',function(){
+    $(this).next('dd').slideToggle();
+  });
+}
+
 var pcEventSort = function(data){
   var grid = "<div class='grid clearfix'><div class='grid-col'></div><div class='grid-col'></div><div class='grid-col'></div></div>";
   $('.container').append(grid);
@@ -48,6 +54,7 @@ var pcEventSort = function(data){
       $('.grid-col:nth-child(3)').append(el);
     }
   }
+  toggle();
 }
 var spEventSort = function(data){
   var grid = "<div class='grid clearfix'></div>";
@@ -60,9 +67,5 @@ var spEventSort = function(data){
     el += "</dl></div>";
     $('.grid').append(el);
   }
+  toggle();
 }
-$(window).on('load',function(){
-  $('dt').on('click',function(){
-    $(this).next('dd').slideToggle();
-  });
-})
